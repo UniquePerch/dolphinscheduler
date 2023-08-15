@@ -18,6 +18,7 @@
 type IDataBase =
   | 'MYSQL'
   | 'POSTGRESQL'
+  | 'DOLPHINDB'
   | 'HIVE'
   | 'SPARK'
   | 'CLICKHOUSE'

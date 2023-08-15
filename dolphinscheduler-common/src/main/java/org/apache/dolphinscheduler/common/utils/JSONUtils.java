@@ -39,6 +39,7 @@ import java.util.TimeZone;
 
 import javax.annotation.Nullable;
 
+import org.apache.dolphinscheduler.common.serializer.SerializerModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -72,10 +73,11 @@ public class JSONUtils {
         logger.info("init timezone: {}", TimeZone.getDefault());
     }
 
-    private static final SimpleModule LOCAL_DATE_TIME_MODULE = new SimpleModule()
+    private static final SimpleModule SIMPLE_MODULE = new SimpleModule()
             .addSerializer(LocalDateTime.class, new LocalDateTimeSerializer())
             .addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer());
 
+    private static final SimpleModule DDB_MODULE = SerializerModule.getModule();
     /**
      * can use static singleton, inject: just make sure to reuse!
      */
@@ -84,7 +86,8 @@ public class JSONUtils {
             .configure(ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT, true)
             .configure(READ_UNKNOWN_ENUM_VALUES_AS_NULL, true)
             .configure(REQUIRE_SETTERS_FOR_GETTERS, true)
-            .registerModule(LOCAL_DATE_TIME_MODULE)
+            .registerModule(SIMPLE_MODULE)
+            .registerModule(DDB_MODULE)
             .setTimeZone(TimeZone.getDefault())
             .setDateFormat(new SimpleDateFormat(YYYY_MM_DD_HH_MM_SS));
 

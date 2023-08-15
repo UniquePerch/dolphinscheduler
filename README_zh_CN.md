@@ -7,6 +7,26 @@
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://s.apache.org/dolphinscheduler-slack)
 [![EN doc](https://img.shields.io/badge/document-English-blue.svg)](README.md)
 
+## 如果需要直接使用本dolphinscheduler包，请直接下载本目录下的apache-dolphinscheduler-3.1.7-bin.tar.gz使用。
+
+## Dolphindb对dolphinscheduler的修改
+
+- 支持了dolphindb数据源。
+  - 修改文件：
+    - 在dolphinscheduler-datasource-plugin中增加了dolphinscheduler-datasource-dolphindb模块。
+    - 在use-datasource.ts,types.ts,use-form.ts增加了DOLPHINDB选项。
+- 增加了dolphindb所有数据类型的序列化方式。
+  - 修改文件：
+    - 在dolphinscheduler-common中增加了serializer文件夹,在JSONUtils增加了DDB_MOUDLE的序列化模块并进行注册。
+- 修改了sqlTask中的部分源码，使其能正常运行dolphindb的脚本。
+  - 修改文件:
+    - 修改了sqlTask中executeUpdate方法，使其能运行dolphindb的sql脚本。
+- 修改了dolphinscheduler针对dolphindb JDBC的参数验证方式。
+  - 修改文件：
+    - 在[DolphinDBDataSourceProcessor.java](dolphinscheduler-datasource-plugin%2Fdolphinscheduler-datasource-dolphindb%2Fsrc%2Fmain%2Fjava%2Forg%2Fapache%2Fdolphinscheduler%2Fplugin%2Fdatasource%2Fdolphindb%2Fparam%2FDolphinDBDataSourceProcessor.java)中重写了checkOther方法。
+    - 在[DolphinDBDataSourceProcessor.java](dolphinscheduler-datasource-plugin%2Fdolphinscheduler-datasource-dolphindb%2Fsrc%2Fmain%2Fjava%2Forg%2Fapache%2Fdolphinscheduler%2Fplugin%2Fdatasource%2Fdolphindb%2Fparam%2FDolphinDBDataSourceProcessor.java)中重写了getDatasourceUniqueId方法。
+
+
 ## 关于
 
 一个分布式易扩展的可视化DAG工作流任务调度系统。致力于解决数据处理流程中错综复杂的依赖关系，使调度系统在数据处理流程中`开箱即用`。
@@ -26,27 +46,27 @@ DolphinScheduler 的主要特性如下：
 ## 快速开始
 
 - 如果想要体验
-    - [standalone 启动](https://dolphinscheduler.apache.org/zh-cn/docs/3.1.5/guide/installation/standalone)
-    - [Docker 启动](https://dolphinscheduler.apache.org/zh-cn/docs/3.1.5/guide/start/docker)
+  - [standalone 启动](https://dolphinscheduler.apache.org/zh-cn/docs/3.1.5/guide/installation/standalone)
+  - [Docker 启动](https://dolphinscheduler.apache.org/zh-cn/docs/3.1.5/guide/start/docker)
 - 想 Kubernetes 部署
-    - [Kubernetes 部署](https://dolphinscheduler.apache.org/zh-cn/docs/3.1.5/guide/installation/kubernetes)
+  - [Kubernetes 部署](https://dolphinscheduler.apache.org/zh-cn/docs/3.1.5/guide/installation/kubernetes)
 
 ## 系统部分截图
 
 * **主页**：项目和工作流概览，包括最新的工作流实例和任务实例状态统计。
-![home](images/home.png)
+  ![home](images/home.png)
 
 * **工作流定义**： 通过拖拉拽创建和管理工作流，轻松构建和维护复杂的工作流。
-![workflow-definition](images/workflow-definition.png)
+  ![workflow-definition](images/workflow-definition.png)
 
 * **工作流树状图**： 抽象的树形结构可以更清晰的理解任务之间的关系
-![workflow-tree](images/workflow-tree.png)
+  ![workflow-tree](images/workflow-tree.png)
 
 * **数据源**： 管理支持多种外部数据源，为MySQL、PostgreSQL、Hive、Trino等，并提供统一的数据访问能力。
-![data-source](images/data-source.png)
+  ![data-source](images/data-source.png)
 
 * **监控**：实时查看master、worker和数据库的状态，包括服务器资源使用情况和负载情况，无需登录服务器即可快速进行健康检查。
-![monitor](images/monitor.png)
+  ![monitor](images/monitor.png)
 
 ## 建议和报告 bugs
 

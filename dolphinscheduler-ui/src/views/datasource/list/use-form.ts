@@ -90,14 +90,14 @@ export function useForm(id?: number) {
           }
         }
       },
-      userName: {
-        trigger: ['input'],
-        validator() {
-          if (!state.detailForm.userName) {
-            return new Error(t('datasource.user_name_tips'))
-          }
-        }
-      },
+      // userName: {
+      //   trigger: ['input'],
+      //   validator() {
+      //     if (!state.detailForm.userName) {
+      //       return new Error(t('datasource.user_name_tips'))
+      //     }
+      //   }
+      // },
       awsRegion: {
         trigger: ['input'],
         validator() {
@@ -106,14 +106,14 @@ export function useForm(id?: number) {
           }
         }
       },
-      database: {
-        trigger: ['input'],
-        validator() {
-          if (!state.detailForm.database && state.requiredDataBase) {
-            return new Error(t('datasource.database_name_tips'))
-          }
-        }
-      },
+      // database: {
+      //   trigger: ['input'],
+      //   validator() {
+      //     if (!state.detailForm.database && state.requiredDataBase) {
+      //       return new Error(t('datasource.database_name_tips'))
+      //     }
+      //   }
+      // },
       connectType: {
         trigger: ['update'],
         validator() {
@@ -190,6 +190,11 @@ export const datasourceType: IDataBaseOptionKeys = {
     value: 'MYSQL',
     label: 'MYSQL',
     defaultPort: 3306
+  },
+  DOLPHINDB: {
+    value: 'DOLPHINDB',
+    label: 'DOLPHINDB',
+    defaultPort: 8848
   },
   POSTGRESQL: {
     value: 'POSTGRESQL',

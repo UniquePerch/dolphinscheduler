@@ -278,7 +278,7 @@ const DetailModal = defineComponent({
                 <NFormItem
                   label={t('datasource.user_name')}
                   path='userName'
-                  show-require-mark
+                  // show-require-mark
                 >
                   <NInput
                     allowInput={this.trim}
@@ -318,7 +318,7 @@ const DetailModal = defineComponent({
                 <NFormItem
                   label={t('datasource.database_name')}
                   path='database'
-                  show-require-mark={requiredDataBase}
+                  // show-require-mark={requiredDataBase}
                 >
                   <NInput
                     allowInput={this.trim}

@@ -7,6 +7,26 @@
 [![Slack Status](https://img.shields.io/badge/slack-join_chat-white.svg?logo=slack&style=social)](https://s.apache.org/dolphinscheduler-slack)
 [![CN doc](https://img.shields.io/badge/文档-中文版-blue.svg)](README_zh_CN.md)
 
+## If you want to use this dolphinscheduler directly,please download apache-dolphinscheduler-3.1.7-bin.tar.gz in this folder and install it!
+
+## Dolphindb modifies the source code of Dolphinscheduler
+
+- Support the datasource of dolphindb.
+  - File changes:
+    - Add a module names dolphinscheduler-datasource-dolphindb in module dolphinscheduler-datasource-plugin.
+    - Add DOLPHINDB option in use-datasource.ts,types.ts,use-form.ts .
+- Add the serializations of dolphindb's data type.
+  - File changes:
+    - Add serializer folder in dolphinscheduler-common module,add a serialization module for DDB_MOUDLE was added and registered in JSONUtils
+- Modified some of the source code in sqlTask so that it can run the dolphindb script normally
+  - File changes:
+    - Modified the executeUpdate method in sqlTask to run dolphindb's sql scripts.
+- Modified the way dolphinscheduler validates parameters for dolphindb JDBC.
+  - File changes:
+    - The checkOther method has been overridden in the [DolphinDBDataSourceProcessor.java](dolphinscheduler-datasource-plugin%2Fdolphinscheduler-datasource-dolphindb%2Fsrc%2Fmain%2Fjava%2Forg%2Fapache%2Fdolphinscheduler%2Fplugin%2Fdatasource%2Fdolphindb%2Fparam%2FDolphinDBDataSourceProcessor.java).
+    - The getDatasourceUniqueId method has been overridden in the [DolphinDBDataSourceProcessor.java](dolphinscheduler-datasource-plugin%2Fdolphinscheduler-datasource-dolphindb%2Fsrc%2Fmain%2Fjava%2Forg%2Fapache%2Fdolphinscheduler%2Fplugin%2Fdatasource%2Fdolphindb%2Fparam%2FDolphinDBDataSourceProcessor.java).
+
+
 ## About
 
 Apache DolphinScheduler is the modern data orchestration platform. Agile to create high performance workflow with low-code. It is also provided powerful user interface,
@@ -41,19 +61,19 @@ The key features for DolphinScheduler are as follows:
 ## User Interface Screenshots
 
 * **Homepage:** Project and workflow overview, including the latest workflow instance and task instance status statistics.
-![home](images/home.png)
+  ![home](images/home.png)
 
 * **Workflow Definition:** Create and manage workflow by drag and drop, easy to build and maintain complex workflow, support [bulk of tasks](https://dolphinscheduler.apache.org/en-us/docs/3.1.5/introduction-to-functions_menu/task_menu) out of box.
-![workflow-definition](images/workflow-definition.png)
+  ![workflow-definition](images/workflow-definition.png)
 
 * **Workflow Tree View:** Abstract tree structure could clearer understanding of the relationship between tasks
-![workflow-tree](images/workflow-tree.png)
+  ![workflow-tree](images/workflow-tree.png)
 
 * **Data source:** Manage support multiple external data sources, provide unified data access capabilities for such as MySQL, PostgreSQL, Hive, Trino, etc.
-![data-source](images/data-source.png)
+  ![data-source](images/data-source.png)
 
 * **Monitor:** View the status of the master, worker and database in real time, including server resource usage and load, do quick health check without logging in to the server.
-![monitor](images/monitor.png)
+  ![monitor](images/monitor.png)
 
 ## Suggestions & Bug Reports
 

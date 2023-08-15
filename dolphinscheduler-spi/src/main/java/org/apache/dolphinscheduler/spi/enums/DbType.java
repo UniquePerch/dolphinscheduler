@@ -39,6 +39,7 @@ public enum DbType {
     H2(9, "h2"),
     REDSHIFT(10,"redshift"),
     ATHENA(11,"athena"),
+    DOLPHINDB(12, "dolphindb")
     ;
 
     @EnumValue
